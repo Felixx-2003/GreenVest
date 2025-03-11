@@ -1,0 +1,139 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Force mobile view */
+html, body {
+    width: 375px; /* Fixed width for mobile */
+    margin: 0 auto;
+    height: 100vh;
+    background-color: #f5f5f5;
+    overflow-x: hidden;
+    border-radius: 10px;
+}
+
+/* Main container */
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Header */
+.header {
+    background-color: #ffd700; /* Yellow background, inspired by Maybank */
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 250px;
+}
+
+.header .profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile-icon {
+    width: 80px !important;  /* Ensure larger size */
+    height: 80px !important;
+    object-fit: cover !important;  /* Make sure the image scales properly */
+    border-radius: 50% !important;  /* Ensure circular shape */
+    margin-right: 10px !important;
+    border: 3px solid #fff !important; /* Optional: White border */
+    display: block !important;
+}
+
+
+.header .greeting {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.header .balance {
+    font-size: 40px;
+    color: #28a745; /* Green for money */
+    margin-top: 5px;
+}
+
+.header .logout {
+    font-size: 24px;
+    color: #000;
+    text-decoration: none;
+}
+
+/* Main Content - Function Buttons */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #fff;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 15px;
+}
+
+.grid-item {
+    background-color: #f0f0f0;
+    height: 100px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    font-size: 12px;
+    transition: transform 0.2s;
+}
+
+.grid-item:hover {
+    transform: scale(1.05);
+}
+
+.grid-item img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 5px;
+}
+
+/* GreenVest Button Styling */
+.grid-item.greenvest {
+    background-color: #28a745; /* Green background for GreenVest */
+    color: #fff;
+}
+
+.grid-item.greenvest img {
+    width: 50px;
+    height: 50px;
+}
+
+/* Footer - Navigation */
+.footer {
+    background-color: #333;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-around;
+    position: sticky;
+    bottom: 0;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    padding: 10px;
+}
+
+.footer a.active {
+    background-color: #28a745;
+    border-radius: 50%;
+}
