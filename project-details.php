@@ -139,12 +139,14 @@ function getLatestBalance() {
 // ✅ Handle button selection
 buttons.forEach(button => {
     button.addEventListener('click', () => {
-        buttons.forEach(btn => btn.classList.remove('selected'));
         if (button.classList.contains('selected')) {
+            // Deselect if already selected
             button.classList.remove('selected');
             selectedAmount = 0;
             customAmountInput.disabled = false;
         } else {
+            // Remove selection from all buttons and select the clicked one
+            buttons.forEach(btn => btn.classList.remove('selected'));
             button.classList.add('selected');
             selectedAmount = parseInt(button.getAttribute('data-amount'));
             customAmountInput.value = '';
@@ -152,6 +154,7 @@ buttons.forEach(button => {
         }
     });
 });
+
 
 // ✅ Handle custom amount input
 customAmountInput.addEventListener('input', () => {
