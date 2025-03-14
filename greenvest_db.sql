@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2025 at 09:11 PM
+-- Generation Time: Mar 14, 2025 at 08:53 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -79,7 +79,15 @@ INSERT INTO `investments` (`investment_id`, `user_id`, `project_id`, `amount`, `
 (37, 1, 'carbon-credits', 1000.00, '2025-03-11 19:14:20'),
 (38, 1, 'wind-projects', 2000.00, '2025-03-11 19:32:46'),
 (39, 3, 'wind-projects', 1000.00, '2025-03-11 19:33:57'),
-(40, 3, 'sustainable-agriculture', 50.00, '2025-03-11 19:34:12');
+(40, 3, 'sustainable-agriculture', 50.00, '2025-03-11 19:34:12'),
+(41, 1, 'carbon-credits', 50.00, '2025-03-12 03:53:18'),
+(42, 1, 'sustainable-agriculture', 1000.00, '2025-03-12 03:55:05'),
+(43, 4, 'wind-projects', 5000.00, '2025-03-12 04:01:23'),
+(44, 4, 'green-bonds', 100.00, '2025-03-12 04:35:14'),
+(45, 3, 'urban-farming', 100.00, '2025-03-14 05:34:36'),
+(55, 11, 'electric-vehicle-charging', 100.00, '2025-03-14 07:45:39'),
+(56, 11, 'biogas-projects', 50.00, '2025-03-14 07:46:26'),
+(57, 11, 'green-bonds', 350.00, '2025-03-14 07:46:50');
 
 -- --------------------------------------------------------
 
@@ -108,7 +116,14 @@ INSERT INTO `payments` (`id`, `user_id`, `merchant`, `amount`, `round_up`, `date
 (5, 2, 'tnb', 19.20, 0.80, '2025-03-11 13:12:35'),
 (6, 2, 'tnb', 19.20, 0.80, '2025-03-11 13:14:11'),
 (7, 2, 'tnb', 19.20, 0.80, '2025-03-11 13:15:00'),
-(8, 3, 'tnb', 13.20, 0.80, '2025-03-11 19:36:09');
+(8, 3, 'tnb', 13.20, 0.80, '2025-03-11 19:36:09'),
+(9, 1, 'tnb', 29.10, 0.90, '2025-03-12 03:53:39'),
+(10, 4, 'tnb', 19.10, 0.90, '2025-03-12 04:02:15'),
+(11, 4, 'tnb', 19.20, 0.80, '2025-03-12 04:02:36'),
+(12, 4, 'tnb', 19.20, 0.80, '2025-03-12 04:35:55'),
+(13, 3, 'tnb', 19.20, 0.80, '2025-03-14 05:35:29'),
+(15, 11, 'time wifi', 19.20, 0.80, '2025-03-14 07:11:09'),
+(16, 11, 'tnb', 19.20, 0.80, '2025-03-14 07:47:34');
 
 -- --------------------------------------------------------
 
@@ -133,17 +148,18 @@ CREATE TABLE `projects` (
 --
 
 INSERT INTO `projects` (`id`, `title`, `goal`, `timeline`, `roi`, `benefits`, `impact`, `category`, `image`) VALUES
-('biogas-projects', 'Biogas Energy Initiative', 'Convert waste into renewable energy.', '24 months', '4-6% annually', 'Carbon reduction credits available', 'Each RM100 funds biogas systems, reducing methane.', 'ESG Fund', 'biogas.png'),
-('carbon-credits', 'Carbon Credit Program', 'Invest in carbon offset projects.', '12 months', '3-5% annually', 'Tradeable carbon credits', 'Each RM100 offsets 40 kg of CO2 emissions', 'Education', 'carbon-credit.png'),
-('community-solar', 'Community Solar Power', 'Fund community solar projects.', '18 months', '5-7% annually', 'Reduced energy costs for residents', 'Each RM100 helps install solar panels for communities.', 'Community Impact', 'community-solar.png'),
-('eco-real-estate', 'Eco-Friendly Real Estate', 'Develop green-certified housing projects.', '36 months', '5-8% annually', 'High demand for sustainable homes', 'Each RM100 supports 1 sqm of green building construction', 'Community Impact', 'eco-home.png'),
-('education-green-schools', 'Green Schools Initiative', 'Support eco-friendly school infrastructure.', '24 months', '4-6% annually', 'Government incentives & community benefits', 'Each RM100 supports eco-friendly school materials.', 'Education', 'green-school.png'),
-('green-bonds', 'Green Bonds', 'Fund sustainable projects with low-risk investments', '24 months', '3-5% annually', 'Government-backed with tax exemptions', 'Each RM100 reduces 30 kg CO2 emissions', 'Green Project', 'green-bond.png'),
-('hydropower-dams', 'Hydropower for Clean Energy', 'Develop sustainable hydropower energy.', '36 months', '5-7% annually', 'Long-term stable returns', 'Each RM100 generates 100 kWh of clean energy.', 'Green Project', 'hydropower.png'),
-('solar-funds', 'Solar Energy for Rural Homes', 'Provide affordable and clean solar energy', '12 months', '4-6% annually', 'Government tax incentives & energy credits', 'Each RM100 funds a solar panel, reducing 50 kg CO2 emissions', 'ESG Fund', 'solar-panel.png'),
-('sustainable-agriculture', 'Organic Farming Expansion', 'Support sustainable farming projects.', '18 months', '4-6% annually', 'Stable returns from organic produce', 'Each RM100 supports 10 sqm of organic farmland', 'Sustainable Agriculture', 'sustainable.png'),
-('urban-farming', 'Urban Vertical Farming', 'Support vertical farming in cities.', '12 months', '3-5% annually', 'Sustainable food production', 'Each RM100 supports hydroponic farming.', 'Sustainable Agriculture', 'urban-farm.png'),
-('wind-projects', 'Wind Projects', 'Support wind energy development', '24 months', '4-6% annually', 'Stable returns with government support', 'Each RM100 generates 60 kWh of clean energy', 'ESG Fund', 'wind.png');
+('biogas-projects', 'Biogas Energy Initiative', 'Convert waste into renewable energy.', '9 months', '4-6% annually', 'Carbon reduction credits available', 'Each RM100 funds biogas systems, reducing methane.', 'ESG Fund', 'biogas.png'),
+('carbon-credits', 'Carbon Credit Program', 'Invest in carbon offset projects.', '4 months', '3-5% annually', 'Tradeable carbon credits', 'Each RM100 offsets 40 kg of CO2 emissions', 'Education', 'carbon-credit.png'),
+('community-solar', 'Community Solar Power', 'Fund community solar projects.', '8 months', '5-7% annually', 'Reduced energy costs for residents', 'Each RM100 helps install solar panels for communities.', 'Community Impact', 'community-solar.png'),
+('eco-real-estate', 'Eco-Friendly Real Estate', 'Develop green-certified housing projects.', '12 months', '5-8% annually', 'High demand for sustainable homes', 'Each RM100 supports 1 sqm of green building construction', 'Community Impact', 'eco-home.png'),
+('education-green-schools', 'Green Schools Initiative', 'Support eco-friendly school infrastructure.', '9 months', '4-6% annually', 'Government incentives & community benefits', 'Each RM100 supports eco-friendly school materials.', 'Education', 'green-school.png'),
+('electric-vehicle-charging', 'EV Charging Stations Expansion', 'Expand EV charging infrastructure in urban areas.', '6 months', '5-7% annually', 'Government incentives & increasing EV adoption', 'Each RM100 helps install an EV charging station, promoting green mobility.', 'Green Project', 'ev-charging.png'),
+('green-bonds', 'Green Bonds', 'Fund sustainable projects with low-risk investments', '5 months', '3-5% annually', 'Government-backed with tax exemptions', 'Each RM100 reduces 30 kg CO2 emissions', 'Green Project', 'green-bond.png'),
+('hydropower-dams', 'Hydropower for Clean Energy', 'Develop sustainable hydropower energy.', '12 months', '5-7% annually', 'Long-term stable returns', 'Each RM100 generates 100 kWh of clean energy.', 'Green Project', 'hydropower.png'),
+('solar-funds', 'Solar Energy for Rural Homes', 'Provide affordable and clean solar energy', '6 months', '4-6% annually', 'Government tax incentives & energy credits', 'Each RM100 funds a solar panel, reducing 50 kg CO2 emissions', 'ESG Fund', 'solar-panel.png'),
+('sustainable-agriculture', 'Organic Farming Expansion', 'Support sustainable farming projects.', '6 months', '4-6% annually', 'Stable returns from organic produce', 'Each RM100 supports 10 sqm of organic farmland', 'Sustainable Agriculture', 'sustainable.png'),
+('urban-farming', 'Urban Vertical Farming', 'Support vertical farming in cities.', '4 months', '3-5% annually', 'Sustainable food production', 'Each RM100 supports hydroponic farming.', 'Sustainable Agriculture', 'urban-farm.png'),
+('wind-projects', 'Wind Projects', 'Support wind energy development', '9 months', '4-6% annually', 'Stable returns with government support', 'Each RM100 generates 60 kWh of clean energy', 'ESG Fund', 'wind.png');
 
 -- --------------------------------------------------------
 
@@ -226,7 +242,26 @@ INSERT INTO `project_contributions` (`id`, `user_id`, `project_id`, `amount`, `d
 (60, 3, 'urban-farming', 0.40, '2025-03-11 19:36:44'),
 (61, 3, 'sustainable-agriculture', 0.30, '2025-03-11 19:42:18'),
 (62, 3, 'urban-farming', 0.30, '2025-03-11 19:42:18'),
-(63, 3, 'solar-funds', 0.30, '2025-03-11 19:42:18');
+(63, 3, 'solar-funds', 0.30, '2025-03-11 19:42:18'),
+(64, 1, 'carbon-credits', 0.90, '2025-03-12 03:53:39'),
+(65, 1, 'carbon-credits', 0.10, '2025-03-12 03:54:08'),
+(66, 1, 'eco-real-estate', 0.10, '2025-03-12 03:54:08'),
+(67, 4, 'wind-projects', 0.90, '2025-03-12 04:02:15'),
+(68, 4, 'community-solar', 0.40, '2025-03-12 04:02:36'),
+(69, 4, 'wind-projects', 0.40, '2025-03-12 04:02:36'),
+(70, 4, 'community-solar', 0.27, '2025-03-12 04:35:55'),
+(71, 4, 'green-bonds', 0.27, '2025-03-12 04:35:55'),
+(72, 4, 'wind-projects', 0.26, '2025-03-12 04:35:55'),
+(73, 3, 'solar-funds', 0.27, '2025-03-14 05:35:29'),
+(74, 3, 'sustainable-agriculture', 0.27, '2025-03-14 05:35:29'),
+(75, 3, 'urban-farming', 0.26, '2025-03-14 05:35:29'),
+(76, 3, 'solar-funds', 0.30, '2025-03-14 05:41:48'),
+(77, 3, 'sustainable-agriculture', 0.30, '2025-03-14 05:41:48'),
+(78, 3, 'urban-farming', 0.30, '2025-03-14 05:41:48'),
+(80, 11, 'biogas-projects', 0.40, '2025-03-14 07:11:09'),
+(81, 11, 'carbon-credits', 0.40, '2025-03-14 07:11:09'),
+(82, 11, 'biogas-projects', 0.40, '2025-03-14 07:47:34'),
+(83, 11, 'carbon-credits', 0.40, '2025-03-14 07:47:34');
 
 -- --------------------------------------------------------
 
@@ -240,7 +275,7 @@ CREATE TABLE `rewards` (
   `description` text NOT NULL,
   `min_investment` decimal(10,2) NOT NULL,
   `partner` varchar(255) NOT NULL,
-  `reward_type` enum('Discount','Voucher','Free Ticket','Other') NOT NULL,
+  `reward_type` varchar(50) NOT NULL,
   `tier` enum('Bronze','Silver','Gold','Diamond') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -249,19 +284,19 @@ CREATE TABLE `rewards` (
 --
 
 INSERT INTO `rewards` (`id`, `reward_name`, `description`, `min_investment`, `partner`, `reward_type`, `tier`) VALUES
-(1, 'Legoland Free Ticket', 'Get a free entry ticket to Legoland.', 5000.00, 'Legoland', 'Free Ticket', 'Diamond'),
-(2, 'Jaya Grocery Voucher', 'RM50 grocery voucher for Jaya Grocery.', 1000.00, 'Jaya Grocery', 'Voucher', 'Gold'),
-(3, 'Sunway Lagoon Discount', 'Enjoy 20% discount on Sunway Lagoon tickets.', 500.00, 'Sunway Lagoon', 'Discount', 'Silver'),
-(4, 'Electricity Bill Rebate', 'RM20 rebate on your electricity bill.', 1000.00, 'TNB', 'Discount', 'Gold'),
-(5, 'Sunway Lagoon Free Entry', 'Enjoy a free entry ticket to Sunway Lagoon.', 5000.00, 'Sunway Lagoon', 'Free Ticket', 'Diamond'),
-(6, 'Jaya Grocery RM100 Voucher', 'Enjoy RM100 grocery shopping discount.', 5000.00, 'Jaya Grocery', 'Voucher', 'Diamond'),
-(7, 'Luxury Hotel Staycation', 'One night free stay at Sunway Hotels.', 1000.00, 'Sunway Hotels', '', 'Gold'),
-(8, 'Electricity Bill RM50 Discount', 'RM50 rebate on your electricity bill.', 1000.00, 'TNB', 'Discount', 'Gold'),
-(9, 'Jaya Grocery RM30 Voucher', 'Get a RM30 discount for your groceries.', 500.00, 'Jaya Grocery', 'Voucher', 'Silver'),
-(10, 'Sunway Lagoon 50% Off', 'Enjoy 50% discount on Sunway Lagoon ticket.', 500.00, 'Sunway Lagoon', 'Discount', 'Silver'),
-(11, 'Cinema Ticket Discount', 'Get 10% off your next cinema ticket.', 100.00, 'GSC Cinemas', 'Discount', 'Bronze'),
-(12, 'Jaya Grocery RM10 Voucher', 'Enjoy RM10 discount on your next grocery purchase.', 100.00, 'Jaya Grocery', 'Voucher', 'Bronze'),
-(13, 'Public Transport Cashback', 'Get RM5 cashback for LRT or MRT rides.', 100.00, 'RapidKL', '', 'Bronze');
+(14, 'Jaya Grocery RM10 Voucher', 'Get RM10 off on groceries', 100.00, 'Jaya Grocery', 'Voucher', 'Bronze'),
+(15, 'Public Transport Cashback', 'Get RM5 cashback for LRT/MRT', 100.00, 'RapidKL', 'Cashback', 'Bronze'),
+(16, 'Cinema Ticket Discount', 'Get 10% off your next movie', 100.00, 'GSC Cinemas', 'Discount', 'Bronze'),
+(17, 'Jaya Grocery RM30 Voucher', 'RM30 discount for groceries', 500.00, 'Jaya Grocery', 'Voucher', 'Silver'),
+(18, 'Sunway Lagoon 20% Off', '20% discount on tickets', 500.00, 'Sunway Lagoon', 'Discount', 'Silver'),
+(19, 'Electricity Bill Rebate (RM20)', 'RM20 rebate on TNB bill', 500.00, 'TNB', 'Discount', 'Silver'),
+(20, 'Jaya Grocery RM50 Voucher', 'RM50 grocery voucher', 1000.00, 'Jaya Grocery', 'Voucher', 'Gold'),
+(21, 'Sunway Lagoon Free Entry', 'Free Sunway Lagoon ticket', 1000.00, 'Sunway Lagoon', 'Free Ticket', 'Gold'),
+(22, 'Electricity Bill Rebate (RM50)', 'RM50 rebate on TNB bill', 1000.00, 'TNB', 'Discount', 'Gold'),
+(23, 'Hotel Stay Discount', '20% discount on Sunway Hotels', 1000.00, 'Sunway Hotels', 'Discount', 'Gold'),
+(24, 'Legoland Free Ticket', 'Free Legoland entry ticket', 5000.00, 'Legoland', 'Free Ticket', 'Diamond'),
+(25, 'Sunway Lagoon Free VIP Pass', 'Free VIP entry & express lane', 5000.00, 'Sunway Lagoon', 'Free Ticket', 'Diamond'),
+(26, 'Luxury Hotel Staycation', 'One night free at Sunway Hotel', 5000.00, 'Sunway Hotels', '', 'Diamond');
 
 -- --------------------------------------------------------
 
@@ -294,7 +329,9 @@ INSERT INTO `transfers` (`id`, `sender_id`, `recipient_id`, `amount`, `round_up`
 (22, 3, NULL, 19.10, 0.90, '2025-03-11 19:35:33'),
 (23, 3, 1, 19.10, 0.90, '2025-03-11 19:35:56'),
 (24, 3, 1, 3.20, 0.80, '2025-03-11 19:36:44'),
-(25, 3, 1, 2.10, 0.90, '2025-03-11 19:42:18');
+(25, 3, 1, 2.10, 0.90, '2025-03-11 19:42:18'),
+(26, 1, 3, 18.80, 0.20, '2025-03-12 03:54:08'),
+(27, 3, 1, 208.10, 0.90, '2025-03-14 05:41:48');
 
 -- --------------------------------------------------------
 
@@ -309,7 +346,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `balance` decimal(10,2) DEFAULT 0.00,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `profile_image` varchar(255) DEFAULT 'default.png'
+  `profile_image` varchar(255) DEFAULT 'user.png'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -317,9 +354,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `name`, `email`, `password`, `balance`, `created_at`, `profile_image`) VALUES
-(1, 'Alice Green', 'alice@example.com', '$2y$10$0Jmr.NqMogCjf12I9Zsrxut5r.0imawA1pdNFaTSmIy9yFyvumx7y', 1824.40, '2025-03-11 06:20:31', 'girl.png'),
+(1, 'Alice Green', 'alice@example.com', '$2y$10$0Jmr.NqMogCjf12I9Zsrxut5r.0imawA1pdNFaTSmIy9yFyvumx7y', 8108.20, '2025-03-11 06:20:31', 'girl.png'),
 (2, 'Bob Smith', 'bob@example.com', '$2y$10$sO8A/at..cCvYHLN3yExweb3RaZ6oKRlEvk6lS8BNG/SnN47ZRWmS', 3000.00, '2025-03-11 06:20:31', 'boy.png'),
-(3, 'Jia Hong', 'jiahong@example.com', '$2y$10$aFKUvIideRhQ3e.z0bwpPem9HkhZNBDuDI44ro4q1FIM1H5kf204y', 3688.00, '2025-03-11 19:03:33', 'boy.png');
+(3, 'Jia Hong', 'jiahong@example.com', '$2y$10$aFKUvIideRhQ3e.z0bwpPem9HkhZNBDuDI44ro4q1FIM1H5kf204y', 3377.80, '2025-03-11 19:03:33', 'boy.png'),
+(4, 'Dhieban', 'dhieban@example.com', '$2y$10$KkiFXMro/rEFxJ3bT4/TRuZ67UoMwOOa87Jeb87Q5ffAiQQwEbJvW', 4840.00, '2025-03-12 03:56:56', 'boy.png'),
+(5, 'testuser', 'testuser@example.com', '$2y$10$N3PG.LYdRfhZSSR.PHqBeOrzeIDD01RIf4M/12bgUULljKzAA8jdG', 5000.00, '2025-03-14 05:27:30', 'boy.png'),
+(11, 'test', 'test@example.com', '$2y$10$tN.eIOyOh9Crthcygxd4LuDOqoMqXDGQv1inyS0z3N0zZpnVLcWCC', 4460.00, '2025-03-14 07:10:50', 'user.png');
 
 -- --------------------------------------------------------
 
@@ -344,7 +384,14 @@ INSERT INTO `user_project_settings` (`id`, `user_id`, `project_id`, `auto_round_
 (13, 2, 'green-bonds', 1),
 (14, 3, 'sustainable-agriculture', 1),
 (15, 3, 'urban-farming', 1),
-(16, 3, 'solar-funds', 1);
+(16, 3, 'solar-funds', 1),
+(17, 1, 'carbon-credits', 1),
+(18, 1, 'eco-real-estate', 1),
+(19, 4, 'wind-projects', 1),
+(20, 4, 'community-solar', 1),
+(21, 4, 'green-bonds', 1),
+(26, 11, 'carbon-credits', 1),
+(27, 11, 'biogas-projects', 1);
 
 --
 -- Indexes for dumped tables
@@ -415,43 +462,43 @@ ALTER TABLE `user_project_settings`
 -- AUTO_INCREMENT for table `investments`
 --
 ALTER TABLE `investments`
-  MODIFY `investment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `investment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `project_contributions`
 --
 ALTER TABLE `project_contributions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `rewards`
 --
 ALTER TABLE `rewards`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `transfers`
 --
 ALTER TABLE `transfers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `user_project_settings`
 --
 ALTER TABLE `user_project_settings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Constraints for dumped tables
