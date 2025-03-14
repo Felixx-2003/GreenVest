@@ -64,6 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php if ($error): ?>
             <p class="error"><?php echo $error; ?></p>
         <?php endif; ?>
+        <p>Don't have an account? <a href="register.php">Register</a></p>
     </div>
 </body>
 </html>

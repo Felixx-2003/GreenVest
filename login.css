@@ -73,12 +73,17 @@ button {
     cursor: pointer;
     transition: background 0.3s;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 button:hover {
     background-color: #e6b800;
 }
 
+
+p{
+    margin-top: 10px;
+}
 /* Error message */
 .error {
     color: red;

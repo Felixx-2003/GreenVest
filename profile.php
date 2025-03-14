@@ -104,9 +104,37 @@ if ($totalInvestment >= 5000) {
         <?php endif; ?>
     </div>
     <div>
-        <div class="greeting">Hello, <?php echo htmlspecialchars($user['name']); ?>!</div>
-        <div class="balance">RM <?php echo number_format($user['balance'], 2); ?></div>
-    </div>
+    <div class="greeting">Hello, <?php echo htmlspecialchars($user['name']); ?>!</div>
+    <div class="balance">RM <?php echo number_format($user['balance'], 2); ?></div>
+    <div class="tier-info">Tier: <?php echo htmlspecialchars($tier); ?></div>
+
+    <?php
+    // Determine next tier and how much more is needed
+    if ($totalInvestment < 100) {
+        $nextTier = "Bronze";
+        $amountNeeded = 100 - $totalInvestment;
+    } elseif ($totalInvestment < 500) {
+        $nextTier = "Silver";
+        $amountNeeded = 500 - $totalInvestment;
+    } elseif ($totalInvestment < 1000) {
+        $nextTier = "Gold";
+        $amountNeeded = 1000 - $totalInvestment;
+    } elseif ($totalInvestment < 5000) {
+        $nextTier = "Diamond";
+        $amountNeeded = 5000 - $totalInvestment;
+    } else {
+        $nextTier = "Top Tier!";
+        $amountNeeded = 0;
+    }
+    ?>
+
+    <?php if ($amountNeeded > 0): ?>
+        <div class="tier-progress">
+            🚀 Invest RM<?php echo number_format($amountNeeded, 2); ?> more to reach <strong><?php echo $nextTier; ?></strong>!
+        </div>
+    <?php endif; ?>
+</div>
+
 </div>
 
             <a href="greenvest.php" class="logout">←</a>
@@ -120,83 +148,96 @@ if ($totalInvestment >= 5000) {
                 <!-- Investment Chart -->
                 <div class="chart-container">
                     <h3>Investment Breakdown</h3>
+                    <?php if (!empty($investmentData)): ?>
                     <canvas id="investmentChart"></canvas>
-                </div>
+                <?php else: ?>
+                    <p class="chart-placeholder">Your investment will be displayed here after your first investment.</p>
+                <?php endif; ?>
+            </div>
 
-                <!-- Investment Summary -->
-                <div class="impact-summary">
-                    <h3>Investment Impact</h3>
-                    <div id="investmentList">
-                        <?php foreach ($investmentData as $investment): ?>
-                            <p>
-                                <strong><?php echo htmlspecialchars($investment['title']); ?></strong>: 
-                                RM<?php echo number_format($investment['total_investment'], 2); ?> invested → 
-                                <?php echo htmlspecialchars($investment['impact']); ?>
-                            </p>
-                        <?php endforeach; ?>
+
+<!-- Investment Summary -->
+<div class="impact-summary">
+    <h3>Investment Impact</h3>
+    <div id="investmentList">
+        <?php if (!empty($investmentData)): ?>
+            <?php foreach ($investmentData as $investment): ?>
+                <p>
+                    <strong><?php echo htmlspecialchars($investment['title']); ?></strong>: 
+                    RM<?php echo number_format($investment['total_investment'], 2); ?> invested → 
+                    <?php echo htmlspecialchars($investment['impact']); ?>
+                </p>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No investments yet. Start investing to see your impact here!</p>
+        <?php endif; ?>
+    </div>
+</div>
+
+<!-- Contribution Chart -->
+<div class="chart-container">
+    <h3>Contribution Breakdown</h3>
+    <?php if (!empty($contributionData)): ?>
+        <canvas id="contributionChart"></canvas>
+    <?php else: ?>
+        <p class="chart-placeholder">Your contributions will be displayed here after your first round-up.</p>
+    <?php endif; ?>
+</div>
+
+<!-- Contribution Summary -->
+<div class="impact-summary">
+    <h3>Round-Up Contributions</h3>
+    <div id="contributionList">
+        <?php if (!empty($contributionData)): ?>
+            <?php foreach ($contributionData as $contribution): ?>
+                <p>
+                    <strong><?php echo htmlspecialchars($contribution['title']); ?></strong>: 
+                    RM<?php echo number_format($contribution['total_contributed'], 2); ?> contributed
+                </p>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No contributions yet. Enable round-up to start contributing!</p>
+        <?php endif; ?>
+    </div>
+</div>
+
+
+<!-- ADD REWARDS HERE -->
+<div class="impact-summary rewards-section">
+    <h3>Your Rewards</h3>
+    <div id="rewardsList">
+        <?php
+        $query = "SELECT reward_name, partner, description, reward_type, tier 
+                  FROM rewards 
+                  WHERE min_investment <= ? 
+                  ORDER BY min_investment DESC";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("d", $totalInvestment);
+        $stmt->execute();
+        $rewards = $stmt->get_result();
+        $stmt->close();
+
+        if ($rewards->num_rows > 0):
+            while ($reward = $rewards->fetch_assoc()): ?>
+                <div class="reward-item">
+                    <div class="reward-info">
+                        <h4><?php echo htmlspecialchars($reward['reward_name']); ?></h4>
+                        <p><strong>Partner:</strong> <?php echo htmlspecialchars($reward['partner']); ?></p>
+                        <p><?php echo htmlspecialchars($reward['description']); ?></p>
+                        <p><strong>Tier:</strong> 
+                            <span class="tier-label <?php echo strtolower($reward['tier']); ?>">
+                                <?php echo htmlspecialchars($reward['tier']); ?>
+                            </span>
+                        </p>
                     </div>
                 </div>
+            <?php endwhile;
+        else: ?>
+            <p>No rewards available. Increase your investment to unlock rewards!</p>
+        <?php endif; ?>
+    </div>
+</div>
 
-                <!-- Contribution Chart -->
-                <div class="chart-container">
-                    <h3>Contribution Breakdown</h3>
-                    <canvas id="contributionChart"></canvas>
-                </div>
-                
-                                <!-- Contribution Summary -->
-                                <div class="impact-summary">
-                    <h3>Round-Up Contributions</h3>
-                    <div id="contributionList">
-                        <?php foreach ($contributionData as $contribution): ?>
-                            <p>
-                                <strong><?php echo htmlspecialchars($contribution['title']); ?></strong>: 
-                                RM<?php echo number_format($contribution['total_contributed'], 2); ?> contributed
-                            </p>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-
-                <!-- ADD REWARDS HERE -->
-                <div class="impact-summary rewards-section">
-                    <h3>Your Rewards</h3>
-                    <div id="rewardsList">
-                        <?php
-                        $query = "SELECT reward_name, partner, description, reward_type
-                                FROM rewards 
-                                WHERE min_investment <= ? 
-                                ORDER BY min_investment DESC";
-                        $stmt = $conn->prepare($query);
-                        $stmt->bind_param("d", $totalInvestment);
-                        $stmt->execute();
-                        $rewards = $stmt->get_result();
-                        $stmt->close();
-
-                        if ($rewards->num_rows > 0):
-                            while ($reward = $rewards->fetch_assoc()):
-                                // Set reward icon based on type
-                                $rewardIcons = [
-                                    "Free Ticket" => "🎟️",
-                                    "Voucher" => "🛒",
-                                    "Discount" => "💸",
-                                    "Cashback" => "💰",
-                                    "Gift" => "🎁"
-                                ];
-                                $icon = $rewardIcons[$reward['reward_type']] ?? "🏆"; // Default icon
-                        ?>
-                            <div class="reward-item">
-                                <span class="reward-icon"><?php echo $icon; ?></span>
-                                <div class="reward-info">
-                                    <h4><?php echo htmlspecialchars($reward['reward_name']); ?></h4>
-                                    <p><strong>Partner:</strong> <?php echo htmlspecialchars($reward['partner']); ?></p>
-                                    <p><?php echo htmlspecialchars($reward['description']); ?></p>
-                                </div>
-                            </div>
-                        <?php endwhile;
-                        else: ?>
-                            <p>No rewards available. Increase your investment to unlock rewards!</p>
-                        <?php endif; ?>
-                    </div>
-                </div>
                         </div>
 
 

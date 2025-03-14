@@ -52,15 +52,15 @@ html, body {
     display: block !important;
 }
 
-/* Greeting & Balance */
 .header .greeting {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
 }
 
 .header .balance {
     font-size: 20px;
     color: #28a745;
+    margin-top: 5px;
 }
 
 /* Logout Button */
@@ -89,6 +89,16 @@ html, body {
 .chart-container {
     width: 100%;
     margin-bottom: 20px;
+}
+
+.chart-placeholder {
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
 }
 
 canvas {
@@ -223,3 +233,36 @@ canvas {
     font-size: 14px;
     color: #555;
 }
+
+.tier-info {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 5px;
+    color: #555;
+}
+
+.tier-progress {
+    margin-top: 8px;
+    padding: 8px;
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Style for the tier labels */
+.tier-label {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Different colors for different tiers */
+.tier-label.bronze { background-color: #cd7f32; }   /* Bronze */
+.tier-label.silver { background-color: #c0c0c0; }   /* Silver */
+.tier-label.gold { background-color: #ffd700; }     /* Gold */
+.tier-label.diamond { background-color: #b9f2ff; color: #000; } /* Diamond */
